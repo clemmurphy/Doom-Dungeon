@@ -6,20 +6,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/main.css">
   <script src="scripts/app.js" charset="utf-8"></script>
-  <title>Pac-Man</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <title>Sir Pac of Man: Doom Dungeon</title>
 </head>
 <body>
   <div class="wrapper column center">
-    <section id="score-section"></section>
-    <section id="menu-section"></section>
-    <section id="game-section">
-      <div id="game-container">
-        <div id="game-grid" class="row wrap">
-
+    <section id="menu-section">
+      <div class="menu-wrapper column center">
+        <div class="menu-character-container row">
+          <div class="pinky menu-enemy"></div>
+          <div class="player menu-player"></div>
+        </div>
+        <p class="subtitle">Sir Pac of Man:</p>
+        <h1>DOOM DUNGEON</h1>
+        <p id="name-label">Enter name:</p>
+        <div class="row center">
+          <button id="random-name"><i class="fas fa-dice"></i></button>
+          <input type="text" placeholder="" id="name-entry" maxlength="8">
+          <button id="start-game">Start</button>
+        </div>
+        <div class="menu-scores column center">
+          <p>High Score:</p>
+          <p id="menu-high-score">0</p>
         </div>
       </div>
     </section>
-    <audio src="" id="player"></audio>
+    <section id="game-section">
+      <section id="score-section" class="row">
+        <div class="scores">
+          <p>Score: <span id="score">0</span></p>
+          <p>High Score: <span id="high-score">0</span></p>
+        </div>
+        <div class="pellets">
+          <p>Pellets Remaining: <span id="pellet-counter">0</span></p>
+          <button id="end-game-button">Exit Game</button>
+        </div>
+      </section>
+      <div id="game-container">
+        <div id="game-grid" class="row wrap"></div>
+        <p id="level-clear-text">LEVEL CLEAR</p>
+      </div>
+    </section>
+    <section id="game-over-screen" class="column center">
+      <h2 id="game-over-text">GAME OVER</h2>
+      <img src="assets/images/skull.png" alt="skull" id="skull-img">
+      <div id="high-scores">
+        <h2>HIGH SCORE</h2>
+        <p id="game-over-high-score">0</p>
+      </div>
+      <button id="menu-button">Return to menu</button>
+    </section>
+    <audio src="" id="track1"></audio>
+    <audio src="" id="track2"></audio>
+    <audio src="assets/sounds/music.wav" id="music"></audio>
   </div>
 </body>
 </html>
