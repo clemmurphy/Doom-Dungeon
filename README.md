@@ -11,11 +11,11 @@ Use either the arrow keys or WASD to move around the arena, avoid the evil enemi
 
 |Icon| Item | Description |
 |--|--|--|
-| ![coin](https://user-images.githubusercontent.com/25615907/131993277-6dcbceec-ed4b-4c2f-b6cc-2f79529a6236.png =50x50)
+| <img src="https://user-images.githubusercontent.com/25615907/131993277-6dcbceec-ed4b-4c2f-b6cc-2f79529a6236.png" width="50" />
  | Coins | Collect them all to win the stage |
-| ![chest](https://user-images.githubusercontent.com/25615907/131993284-55f141bd-cc1b-43b8-a8ea-07634da51c50.gif =50x50)
+| ![chest](https://user-images.githubusercontent.com/25615907/131993284-55f141bd-cc1b-43b8-a8ea-07634da51c50.gif)
  | Chests | Makes the player invincible, and ghosts vulnerable |
-| ![door](https://user-images.githubusercontent.com/25615907/131993295-34fb0f1b-6592-4a97-a389-6622edf24884.png =50x50)
+| ![door](https://user-images.githubusercontent.com/25615907/131993295-34fb0f1b-6592-4a97-a389-6622edf24884.png)
  | Doors | Transports the player to the other side of the arena |
 
 ## 🤖 Why make this?
