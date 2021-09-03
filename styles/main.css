@@ -12,6 +12,7 @@
   --cell-width: 22px;
   --grid-height: 36;
   --grid-width: 28;
+  --bg-color: #111;
   --font: 'VT323', monospace;
 }
 
@@ -52,6 +53,10 @@
   text-align: left;
 }
 
+#menu-section {
+  transition: 1s;
+}
+
 .menu-scores {
   margin-top: 20px;
 }
@@ -65,13 +70,13 @@
 #game-grid {
   height: calc(var(--cell-width) * var(--grid-height));
   width: calc(var(--cell-width) * var(--grid-width));
-  background-color: black;
+  background-color: var(--bg-color);
 }
 
 #game-section {
   /* game section is hidden by default */
   display: none;
-  border: 10px black solid;
+  border: 10px var(--bg-color) solid;
 }
 
 .menu-wrapper {
@@ -82,7 +87,7 @@
 .cell {
   width: var(--cell-width);
   height: var(--cell-width);
-  background-color: black;
+  background-color: var(--bg-color);
   font-size: 8px;
 }
 
@@ -94,35 +99,35 @@
 }
 
 .ghost-house {
-  background-color: black;
+  background-color: var(--bg-color);
 }
 
 .teleport-left {
-  background-color: black;
+  background-color: var(--bg-color);
   background-image: url(../assets/images/door.png);
   background-size: cover;
 }
 
 .teleport-right {
-  background-color: black;
+  background-color: var(--bg-color);
   background-image: url(../assets/images/door.png);
   background-size: cover;
 }
 
 .prisoner {
-  background-color: black;
+  background-color: var(--bg-color);
   background-image: url(../assets/images/prisoner.png);
   background-size: cover;
 }
 
 .green-flag {
-  background-color: black;
+  background-color: var(--bg-color);
   background-image: url(../assets/images/flag_green.png);
   background-size: cover;
 }
 
 .red-flag {
-  background-color: black;
+  background-color: var(--bg-color);
   background-image: url(../assets/images/flag_red.png);
   background-size: cover;
 }
@@ -193,7 +198,7 @@
 .wrapper {
   height: 100vh;
   width: 100vw;
-  background-color: black;
+  background-color: var(--bg-color);
   transition: 0.2s;
 }
 
@@ -203,12 +208,12 @@
 
 h1 {
   font-family: var(--font);
-  font-size: 120px;
+  font-size: 140px;
   text-transform: uppercase;
   letter-spacing: 5px;
   margin-bottom: 20px;
-  animation: scale-in-hor-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: shadow 3s ease alternate infinite;
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg);
 }
 
 h2 {
@@ -220,6 +225,8 @@ h2 {
 
 .subtitle {
   font-size: 32px;
+  transform-style: preserve-3d;
+  transform: rotateX(20deg);
 }
 
 .menu-character-container {
@@ -247,7 +254,7 @@ button {
   width: 140px;
   border: none;
   border: 2px lightslategray solid;
-  background-color: black;
+  background-color: var(--bg-color);
   color: lightslategray;
   padding: 5px;
   font-family: var(--font);
@@ -255,16 +262,16 @@ button {
   margin: 5px 0;
 }
 
-#menu-button {
-  margin-top: 40px;
-}
-
 button:hover {
   border: 2px yellow solid;
-  background-color: black;
+  background-color: var(--bg-color);
   color: yellow;
   transition: 0.5s;
   cursor: pointer;
+}
+
+#menu-button {
+  margin-top: 40px;
 }
 
 .high-scores {
@@ -308,7 +315,7 @@ button:hover {
   width: 80px;
   border: none;
   border: 2px lightslategray solid;
-  background-color: black;
+  background-color: var(--bg-color);
   color: lightslategray;
   padding: 5px;
   font-family: var(--font);
@@ -321,7 +328,7 @@ button:hover {
   outline: none;
   border: none;
   border: 2px yellow solid;
-  background-color: black;
+  background-color: var(--bg-color);
 }
 
 #random-name {
@@ -330,8 +337,11 @@ button:hover {
   margin-right: 5px;
 }
 
-.shake {
-  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+.white {
+  font-size: 160px;
+  color: white;
+  transition: 3s;
+  filter: none;
 }
 
 #start-game {
@@ -343,7 +353,7 @@ button:hover {
 
 #start-game:hover {
   border: 2px yellow solid;
-  background-color: black;
+  background-color: var(--bg-color);
   color: yellow;
   transition: 0.5s;
   animation: vibrate 0.5s linear infinite both;
@@ -356,7 +366,26 @@ button:hover {
   margin-bottom: 10px;
 }
 
+.persp{
+  perspective: 300px;
+}
+
 /* Animation Rules */
+
+.shake {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+.shadow {
+  animation: shadow 3s ease alternate infinite;
+}
+
+.bg-anim {
+  background: linear-gradient(182deg, #000000, slategray);
+  background-size: 400% 400%;
+
+  animation: backgound-anim 22s ease infinite;
+}
 
 .powerup-mode {
   animation-name: powerup;
@@ -367,7 +396,7 @@ button:hover {
 
 @keyframes powerup {
   0% {
-    background: black;
+    background: var(--bg-color);
   }
   100% {
     background: yellow;
@@ -421,17 +450,6 @@ button:hover {
   }
 }
 
-@keyframes scale-in-hor-center {
-  0% {
-    transform: scaleX(0);
-    opacity: 1;
-  }
-  100% {
-    transform: scaleX(1);
-    opacity: 1;
-  }
-}
-
 @keyframes shake {
   10%, 90% {
     transform: translate3d(-1px, 0, 0);
@@ -455,6 +473,12 @@ button:hover {
     filter: drop-shadow(0 0 4px slategray);
   }
   100% {
-    filter: drop-shadow(0 10px 8px yellow);
+    filter: drop-shadow(-5px 12px 6px yellow);
   }
+}
+
+@keyframes backgound-anim {
+  0%{background-position:21% 0%}
+  50%{background-position:20% 20%}
+  100%{background-position:21% 0%}
 }

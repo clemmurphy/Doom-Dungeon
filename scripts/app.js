@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 function init() {
 
   // ! OBJECTS
@@ -106,7 +108,7 @@ function init() {
       }, this.speed)
       const setChase = setTimeout(() => {
         this.state = 'chase'
-      }, 7000)
+      }, 4000)
     }
 
     updatePrios() {
@@ -297,7 +299,11 @@ function init() {
         }
 
         // if it moves into a player, handle
-        if (this.posY === player.posY && this.posX === player.posX && cellMap[player.posY][player.posX].classList.contains(`${this.name}`)) {
+        if (this.posY === player.posY && this.posX === player.posX) {
+          ghostCollision(this)
+        } else if (cellMap[player.posY][player.posX].classList.contains(`${this.name}`)) {
+          ghostCollision(this)
+        } else if (cellMap[this.posY][this.posX].classList.contains('player')) {
           ghostCollision(this)
         }
         addGhost(this.name, this.posY, this.posX)
@@ -306,10 +312,10 @@ function init() {
   }
 
   // instantiate ghosts
-  const blinky = new Ghost(18, 13, 'scatter', 1000, 'blinky', 0, 0)
-  const pinky = new Ghost(18, 14, 'scatter', 750, 'pinky', 0, gridWidth)
-  const inky = new Ghost(19, 13, 'scatter', 800, 'inky', gridHeight, 0)
-  const clyde = new Ghost(19, 14, 'scatter', 600, 'clyde', gridHeight, cellCount)
+  const blinky = new Ghost(18, 13, 'scatter', 800, 'blinky', 0, 0)
+  const pinky = new Ghost(18, 14, 'scatter', 550, 'pinky', 0, gridWidth)
+  const inky = new Ghost(19, 13, 'scatter', 500, 'inky', gridHeight, 0)
+  const clyde = new Ghost(19, 14, 'scatter', 400, 'clyde', gridHeight, cellCount)
 
   // main menu UI items
   const menuMonster = document.querySelector('.menu-enemy')
@@ -333,14 +339,23 @@ function init() {
     document.getElementById('menu-section').style.display = 'flex'
     document.getElementById('game-section').style.display = 'none'
     document.getElementById('game-over-screen').style.display = 'none'
+    document.querySelector('.wrapper').classList.add('bg-anim')
 
     // enable start game button
     const startButton = document.getElementById('start-game')
     startButton.addEventListener('click', () => {
-      player.name = nameInput.value
-      localStorage.setItem('lastUsedName', player.name)
-      console.log(player.name)
-      startGame()
+      const h1Props = document.querySelector('h1').classList
+      h1Props.add('white')
+      startButton.classList.add('powerup-mode')
+      music.pause()
+      music.src = 'assets/sounds/game-start.mp3'
+      music.play()
+      setTimeout(() => {
+        player.name = nameInput.value
+        localStorage.setItem('lastUsedName', player.name)
+        console.log(player.name)
+        startGame()
+      }, 3000)
     })
 
     // check for high scores in local storage and update
@@ -353,12 +368,12 @@ function init() {
     // populate name
     const nameInput = document.getElementById('name-entry')
     if (localStorage.getItem('lastUsedName')) {
-      nameInput.innerText = localStorage.getItem('lastUsedName')
+      nameInput.value = localStorage.getItem('lastUsedName')
     }
 
     // random placeholder
-    const placeholderNames = ['big dave', 'boggy b', 'wibbler', 'fisto', 'ratty', 'rob', 'pacman', 'blinky', 'inky', 'pinky', 'clyde']
-    nameInput.placeholder = placeholderNames[Math.floor(Math.random() * placeholderNames.length)]
+    const placeholderNames = ['perrin', 'mat', 'rand', 'leopold', 'ishimura', 'funaki' ,'shigeo', 'namco', 'puck', 'big boi', 'smallant', 'd00m', 'leper', 'gary', 'spongeb', 'bwipo', 'dank420', 'big dave', 'boggy b', 'wibbler', 'fisto', 'ratty', 'rob', 'pacman', 'blinky', 'inky', 'pinky', 'clyde']
+    nameInput.value = placeholderNames[Math.floor(Math.random() * placeholderNames.length)]
 
     // get random name
     const randomName = document.getElementById('random-name')
@@ -370,8 +385,10 @@ function init() {
       nameInput.value = placeholderNames[Math.floor(Math.random() * placeholderNames.length)]
     })
 
-    // ensure music is not playing
+    // play menu music
     music.pause()
+    music.src = 'assets/sounds/menu-music.mp3'
+    music.play()
   }
 
   function endGame() {
@@ -409,6 +426,7 @@ function init() {
     document.getElementById('menu-section').style.display = 'none'
     document.getElementById('game-section').style.display = 'flex'
     document.getElementById('game-over-screen').style.display = 'none'
+    document.querySelector('.wrapper').classList.remove('bg-anim')
 
     const endButton = document.getElementById('end-game-button')
     endButton.addEventListener('click', endGame)
@@ -427,6 +445,7 @@ function init() {
     blinky.spawn()
 
     // play music
+    music.src = 'assets/sounds/music.wav'
     music.volume = 0.2
     music.loop = true
     music.play()
@@ -581,6 +600,8 @@ function init() {
 
       // remove player and ghost
       removePlayer(player.posY, player.posX)
+      player.posX = 0
+      player.posY = 0
       cellMap[player.posY][player.posX].classList.remove(ghost.name)
 
       // stop music and play death sound
@@ -598,39 +619,43 @@ function init() {
   }
 
   function playerPowerup() {
-    // set powerup and scared states
-    player.super = true
-    blinky.state = 'scared'
-    pinky.state = 'scared'
-    inky.state = 'scared'
-    clyde.state = 'scared'
+    // only allow player to pick up powerups if they are not already powered up
+    if (player.super === false) {
 
-    // add body effects
-    const wrapper = document.querySelector('.wrapper')
-    wrapper.classList.add('powerup-mode')
+      // set powerup and scared states
+      player.super = true
+      blinky.state = 'scared'
+      pinky.state = 'scared'
+      inky.state = 'scared'
+      clyde.state = 'scared'
 
-    // add score and play collect sound
-    updateScore(50)
-    game.audio2.src = 'assets/sounds/powerup.mp3'
-    game.audio2.play()
+      // add body effects
+      const wrapper = document.querySelector('.wrapper')
+      wrapper.classList.add('powerup-mode')
 
-    // play powerup music
-    music.src = 'assets/sounds/powerup.wav'
-    music.play()
+      // add score and play collect sound
+      updateScore(50)
+      game.audio2.src = 'assets/sounds/powerup.mp3'
+      game.audio2.play()
 
-    // reset all once powerup expires
-    setTimeout(() => {
-      player.super = false
-      blinky.state = 'chase'
-      pinky.state = 'chase'
-      inky.state = 'chase'
-      clyde.state = 'chase'
-
-      wrapper.classList.remove('powerup-mode')
-
-      music.src = 'assets/sounds/music.wav'
+      // play powerup music
+      music.src = 'assets/sounds/powerup.wav'
       music.play()
-    }, game.superDuration)
+
+      // reset all once powerup expires
+      setTimeout(() => {
+        player.super = false
+        blinky.state = 'chase'
+        pinky.state = 'chase'
+        inky.state = 'chase'
+        clyde.state = 'chase'
+
+        wrapper.classList.remove('powerup-mode')
+
+        music.src = 'assets/sounds/music.wav'
+        music.play()
+      }, game.superDuration)
+    }
   }
 
   function removePlayer(posY, posX) {
