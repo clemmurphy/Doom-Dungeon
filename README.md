@@ -28,11 +28,9 @@ The majority of the logic is in determining the enemy pathfinding. The decision 
 
 Just like Pac-Man, each enemy type has its own 'personality' or tracking style similar to Pac-Man!
 
-
-![slime](https://user-images.githubusercontent.com/25615907/131990067-0b76a4e9-5a30-4f2f-8ad7-f1da24fcfcc7.gif) Blinky (red ghost) tracks the most direct path to the player
-
-![flying-enemy](https://user-images.githubusercontent.com/25615907/131990192-5bb4de4c-295c-4c25-99f1-82ca7b75cc3c.gif) Pinky (pink ghost) tracks a path towards four squares in front of the player's direction, meaning to intercept
-
-![bomb](https://user-images.githubusercontent.com/25615907/131990240-6e88cfaf-1194-4e23-8ae6-627d69e60b1d.gif) Inky (blue ghost) makes semi-random decisions at each intersection, aiming for a random additional distance in front of the player
-
-![goblin](https://user-images.githubusercontent.com/25615907/131990117-ecbd6490-5bae-4364-af2e-21114490aa03.gif) Clyde (yellow ghost) directly tracks the player until it gets within 8 squares, then tries to avoid, making their movement unpredictable
+| Enemy | Name | Personality |
+|--|--|--|
+| ![slime](https://user-images.githubusercontent.com/25615907/131990067-0b76a4e9-5a30-4f2f-8ad7-f1da24fcfcc7.gif) | Blinky (red ghost) | Tracks the most direct path to the player |
+| ![flying-enemy](https://user-images.githubusercontent.com/25615907/131990192-5bb4de4c-295c-4c25-99f1-82ca7b75cc3c.gif) | Pinky (pink ghost) | Tracks a path towards four squares in front of the player's direction, meaning to intercept |
+| ![bomb](https://user-images.githubusercontent.com/25615907/131990240-6e88cfaf-1194-4e23-8ae6-627d69e60b1d.gif) | Inky (blue ghost) | Makes semi-random decisions at each intersection, aiming for a random additional distance in front of the player |
+| ![goblin](https://user-images.githubusercontent.com/25615907/131990117-ecbd6490-5bae-4364-af2e-21114490aa03.gif) | Clyde (yellow ghost) | Directly tracks the player until it gets within 8 squares, then tries to avoid, making their movement unpredictable |
