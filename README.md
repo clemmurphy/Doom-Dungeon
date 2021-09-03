@@ -6,7 +6,17 @@
 This is a Pac-Man clone created using only vanilla JavaScript, HTML and CSS with no libraries or frameworks. The player can move around the screen, collect coins, run from four unique types of pathfinding enemies, collect powerups and log their highest scores.
 
 ## 🎮 How to Play 
+[Play Online Here!](https://clemmurphy.github.io/Doom-Dungeon/)
 Use either the arrow keys or WASD to move around the arena, avoid the evil enemies, and collect as many coins as you can. Collecting a chest turns the tables, with the player now able to defeat enemies for extra points. Be wary though, the power of the chests only lasts a limited time, and enemies will not forget you after it runs out!
+
+|Icon| Item | Description |
+|--|--|--|
+| ![coin](https://user-images.githubusercontent.com/25615907/131993277-6dcbceec-ed4b-4c2f-b6cc-2f79529a6236.png)
+ | Coins | Collect them all to win the stage |
+| ![chest](https://user-images.githubusercontent.com/25615907/131993284-55f141bd-cc1b-43b8-a8ea-07634da51c50.gif)
+ | Chests | Makes the player invincible, and ghosts vulnerable |
+| ![door](https://user-images.githubusercontent.com/25615907/131993295-34fb0f1b-6592-4a97-a389-6622edf24884.png)
+ | Doors | Transports the player to the other side of the arena |
 
 ## 🤖 Why make this?
 This project was made as a test of my JavaScript skills for General Assembly's Software Engineering Immersive course. It showcases how you can use a combination of JavaScript DOM manipulation to create complex logic and interactive experiences.
