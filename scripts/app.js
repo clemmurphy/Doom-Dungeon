@@ -359,12 +359,15 @@ function init() {
     })
 
     // check for high scores in local storage and update
-    if (localStorage.getItem('highScore')) {
+    if (localStorage.getItem('highScore') !== null && localStorage.getItem('lastUsedName') !== undefined) {
       game.highScore = localStorage.getItem('highScore')
       game.highScoreName = localStorage.getItem('highScoreName')
       document.getElementById('menu-high-score').innerText = `${game.highScore} ${game.highScoreName}`
+    } else if (localStorage.getItem('highScore')) {
+      game.highScore = localStorage.getItem('highScore')
+      document.getElementById('menu-high-score').innerText = `${game.highScore}`
     } else {
-      document.getElementById('menu-high-score').style.display = 'none'
+      document.getElementById('menu-high-score').innerText = 'Not set yet!'
     }
     
 
