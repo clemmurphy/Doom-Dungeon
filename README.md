@@ -18,7 +18,7 @@ Use either the arrow keys or WASD to move around the arena, avoid the evil enemi
 ## 🤖 Why make this?
 This project was made as a test of my JavaScript skills for General Assembly's Software Engineering Immersive course. It showcases how you can use a combination of JavaScript DOM manipulation to create complex logic and interactive experiences.
 
-![screencapture-file-C-Users-clemm-Desktop-dev-SEI58-Projects-Project-1-SEI-Project-1-index-html-2021-09-03-10_49_08](https://user-images.githubusercontent.com/25615907/131986321-f0d0809f-1d58-465d-ba3e-0f9f80ab2ae4.png)
+![doom-dungeon](https://user-images.githubusercontent.com/25615907/132006627-5447dd78-17b4-49a2-8b59-188aacc31108.gif)
 
 ## How does it work?
 ### 🗺️ Building the Map
