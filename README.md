@@ -2,28 +2,28 @@
 
 # Sir Pac of Man: Doom Dungeon
 
-## What is it?
+## 🤔 What is it?
 This is a Pac-Man clone created using only vanilla JavaScript, HTML and CSS with no libraries or frameworks. The player can move around the screen, collect coins, run from four unique types of pathfinding enemies, collect powerups and log their highest scores.
 
-## How to Play
+## 🎮 How to Play 
 Use either the arrow keys or WASD to move around the arena, avoid the evil enemies, and collect as many coins as you can. Collecting a chest turns the tables, with the player now able to defeat enemies for extra points. Be wary though, the power of the chests only lasts a limited time, and enemies will not forget you after it runs out!
 
-## Why make this?
+## 🤖 Why make this?
 This project was made as a test of my JavaScript skills for General Assembly's Software Engineering Immersive course. It showcases how you can use a combination of JavaScript DOM manipulation to create complex logic and interactive experiences.
 
 ![screencapture-file-C-Users-clemm-Desktop-dev-SEI58-Projects-Project-1-SEI-Project-1-index-html-2021-09-03-10_49_08](https://user-images.githubusercontent.com/25615907/131986321-f0d0809f-1d58-465d-ba3e-0f9f80ab2ae4.png)
 
 ## How does it work?
-### Building the Map
+### 🗺️ Building the Map
 The arena is built at runtime, using a flex grid of cells. The map itself is designed using a CSV, which is then added into the JavaScript file as an array, iterated by a loop, then built onto a 2-dimensional array to give some form of cell co-ordinates system for tracking entities.
 
-### Tracking entities
+### 👾 Tracking entities
 All entities, including walls, player, enemies and decorations, are added dynamically to the DOM on a grid of divs that act as playing area cells. They are tracked using CSS classes, meaning tests with JavaScript can determine if the player or enemy entities can move into certain grid squares.
 
-### Retaining Scores
+### 🧮 Retaining Scores
 High scores and names are retained using browser local storage. Players can enter their names and add them to the high score list
 
-### Pathfinding and Enemy Personalities
+### 👹 Pathfinding and Enemy Personalities
 The majority of the logic is in determining the enemy pathfinding. The decision to move in any given direction is taken by measuring the whether X or Y axis is furthest from the target square, then ensuring the correct direction is not through a wall or other forbidden area. The decision logic is re-run every time an enemy reaches an intersection to ensure they are tracking the target correctly.
 
 Just like Pac-Man, each enemy type has its own 'personality' or tracking style similar to Pac-Man!
