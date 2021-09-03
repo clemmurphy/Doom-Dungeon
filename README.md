@@ -14,6 +14,9 @@ This project was made as a test of my JavaScript skills for General Assembly's S
 ![screencapture-file-C-Users-clemm-Desktop-dev-SEI58-Projects-Project-1-SEI-Project-1-index-html-2021-09-03-10_49_08](https://user-images.githubusercontent.com/25615907/131986321-f0d0809f-1d58-465d-ba3e-0f9f80ab2ae4.png)
 
 ## How does it work?
+### Building the Map
+The arena is built at runtime, using a flex grid of cells. The map itself is designed using a CSV, which is then added into the JavaScript file as an array, iterated by a loop, then built onto a 2-dimensional array to give some form of cell co-ordinates system for tracking entities.
+
 ### Tracking entities
 All entities, including walls, player, enemies and decorations, are added dynamically to the DOM on a grid of divs that act as playing area cells. They are tracked using CSS classes, meaning tests with JavaScript can determine if the player or enemy entities can move into certain grid squares.
 
