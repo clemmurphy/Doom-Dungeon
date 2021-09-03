@@ -362,8 +362,11 @@ function init() {
     if (localStorage.getItem('highScore')) {
       game.highScore = localStorage.getItem('highScore')
       game.highScoreName = localStorage.getItem('highScoreName')
+      document.getElementById('menu-high-score').innerText = `${game.highScore} ${game.highScoreName}`
+    } else {
+      document.getElementById('menu-high-score').style.display = 'none'
     }
-    document.getElementById('menu-high-score').innerText = `${game.highScore} ${game.highScoreName}`
+    
 
     // populate name
     const nameInput = document.getElementById('name-entry')
